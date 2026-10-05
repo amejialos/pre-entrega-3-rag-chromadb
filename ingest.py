@@ -171,5 +171,6 @@ def main() -> None:
 if __name__ == "__main__":
     load_dotenv()  # carga .env al entorno; el código nunca tiene keys escritas
     logging.basicConfig(level=logging.INFO, format="%(levelname)-7s %(name)s: %(message)s")
-    logging.getLogger("httpx").setLevel(logging.WARNING)
+    # Los logs INFO del cliente HTTP (httpx2) quedan visibles a propósito: muestran cada
+    # llamada al proveedor, y así se ve que una segunda corrida no vuelve a indexar.
     main()

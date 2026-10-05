@@ -68,5 +68,6 @@ async def main() -> int:
 if __name__ == "__main__":
     load_dotenv()  # carga .env al entorno; el código nunca tiene keys escritas
     logging.basicConfig(level=logging.INFO, format="%(levelname)-7s %(name)s: %(message)s")
-    logging.getLogger("httpx").setLevel(logging.WARNING)  # el SDK loguea cada request en INFO
+    # Los logs INFO del cliente HTTP (httpx2) quedan visibles a propósito: muestran cada
+    # llamada al proveedor, y así se ve que una segunda corrida no vuelve a indexar.
     sys.exit(asyncio.run(main()))
